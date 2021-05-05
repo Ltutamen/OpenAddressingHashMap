@@ -13,7 +13,7 @@ public class PutGetTest {
 
         map.put(key, val);
 
-        long mapValue = map.get(key).get();
+        long mapValue = map.get(key);
 
         Assertions.assertEquals(val, mapValue);
     }
@@ -35,7 +35,7 @@ public class PutGetTest {
             final int key = entry.getKey();
             final long value = entry.getValue();
 
-            long mapValue = map.get(key).get();
+            long mapValue = map.get(key);
             Assertions.assertEquals(value, mapValue);
         }
 

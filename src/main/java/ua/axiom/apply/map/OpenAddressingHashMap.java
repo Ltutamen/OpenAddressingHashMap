@@ -3,13 +3,11 @@ package ua.axiom.apply.map;
 import ua.axiom.apply.model.NoMapElementException;
 
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 public class OpenAddressingHashMap implements HashMap {
     public static final int DEFAULT_INITIAL_CAPACITY = 255;
     private static final float DEFAULT_FILL_FACTOR = 0.33F;
     private static final int DEFAULT_RESIZE_FACTOR = 8;
-    private static final int MAP_CAIN_LEN = 5;
 
     private MapEntry[] data;
     private int presentElmCount;
@@ -36,7 +34,7 @@ public class OpenAddressingHashMap implements HashMap {
         //  we might have to resize data array many times, until hashKey index can be assigned
         while(true) {
             //  put element
-            for(int i = hashKey; i < currentMaxCapacity ; ++i) {
+            for(int i = hashKey ; i < currentMaxCapacity ; ++i) {
                 if(data[i] == null) {
                     MapEntry newEntry = new MapEntry(key, value);
                     data[i] = newEntry;
