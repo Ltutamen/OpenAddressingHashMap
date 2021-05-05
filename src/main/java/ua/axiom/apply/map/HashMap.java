@@ -1,5 +1,7 @@
 package ua.axiom.apply.map;
 
+import ua.axiom.apply.model.NoMapElementException;
+
 import java.util.Optional;
 
 public interface HashMap {
@@ -11,6 +13,6 @@ public interface HashMap {
      *          false if key is not present
      */
     boolean put(int key, long value);
-    long get(int key);
+    long get(int key) throws NoMapElementException;
     int size();
 }
