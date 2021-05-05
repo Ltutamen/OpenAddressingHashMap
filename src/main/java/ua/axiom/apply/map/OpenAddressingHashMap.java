@@ -1,11 +1,15 @@
 package ua.axiom.apply.map;
 
+import ua.axiom.apply.model.NoMapElementException;
+
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class OpenAddressingHashMap implements HashMap {
     public static final int DEFAULT_INITIAL_CAPACITY = 255;
     private static final float DEFAULT_FILL_FACTOR = 0.33F;
     private static final int DEFAULT_RESIZE_FACTOR = 8;
+    private static final int MAP_CAIN_LEN = 5;
 
     private MapEntry[] data;
     private int presentElmCount;
@@ -51,20 +55,19 @@ public class OpenAddressingHashMap implements HashMap {
     }
 
     @Override
-    public Optional<Long> get(int key) {
+    public long get(int key) throws NoSuchElementException {
         int hashKey = getHashKey(key);
 
         for(int i = hashKey; i < currentMaxCapacity ; ++i) {
             if(data[i] == null) {
-                return Optional.empty();
+                break;
             }
             else if(data[i].getKey() == key) {
-                Long value = data[i].getValue();
-                return Optional.of(value);
+                return data[i].getValue();
             }
         }
 
-        return Optional.empty();
+        throw new NoMapElementException(key);
 
     }
 

@@ -11,6 +11,6 @@ public interface HashMap {
      *          false if key is not present
      */
     boolean put(int key, long value);
-    Optional<Long> get(int key);
+    long get(int key);
     int size();
 }
