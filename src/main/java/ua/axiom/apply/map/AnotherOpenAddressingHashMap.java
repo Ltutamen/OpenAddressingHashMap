@@ -79,14 +79,10 @@ public class AnotherOpenAddressingHashMap implements HashMap {
         return presentElementsCount;
     }
 
-    /**
-     *
-     * @param forKey
-     * @return hashCode, NOT EQUALS TO 0!!
-     */
+
     private int getHashCode(int forKey) {
-        int result = forKey % maxElements;
-        return result == 0 ? ++result : result;
+
+        return forKey % maxElements;
     }
 
     private void resize(int newSize) {
